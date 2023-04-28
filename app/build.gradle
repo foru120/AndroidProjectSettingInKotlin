@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
     id 'kotlin-kapt'
 }
 
@@ -63,8 +63,8 @@ dependencies {
 
     // Coroutines
     def coroutines_ver = "1.6.0"
-    implementation "org.jetbrains.kotlinx-coroutines-core:$coroutines_ver"
-    implementation "org.jetbrains.kotlinx-coroutines-android:$coroutines_ver"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_ver"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_ver"
 
     // LifeCycle
     def lifecycle_ver = "2.5.1"

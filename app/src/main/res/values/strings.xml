@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidProjectSettingInKotlin</string>
+    <string name="base_url"></string>
+    <string name="base_prefs"></string>
 </resources>

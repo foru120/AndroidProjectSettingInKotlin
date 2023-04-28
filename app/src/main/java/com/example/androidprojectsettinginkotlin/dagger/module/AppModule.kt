@@ -1,7 +1,9 @@
 package com.example.androidprojectsettinginkotlin.dagger.module
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.example.androidprojectsettinginkotlin.MyApplication
+import com.example.androidprojectsettinginkotlin.R
 import com.example.androidprojectsettinginkotlin.database.AppDatabase
 import com.example.androidprojectsettinginkotlin.database.dao.UserDao
 import dagger.Module
@@ -9,7 +11,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule(val application: MyApplication) {
+class AppModule {
 
     @Singleton
     @Provides
@@ -17,11 +19,20 @@ class AppModule(val application: MyApplication) {
 
     @Singleton
     @Provides
-    fun getRoomInstance(): AppDatabase {
-        return AppDatabase.getAppDatabaseInstance()
+    fun getRoomInstance(context: Context): AppDatabase {
+        return AppDatabase.getAppDatabaseInstance(context)
     }
 
     @Singleton
     @Provides
-    fun prodiveAppContext(): Context = application.applicationContext
+    fun providesAppContext(application: MyApplication): Context = application.applicationContext
+
+    @Singleton
+    @Provides
+    fun providesPreferences(application: MyApplication): SharedPreferences {
+        return application.getSharedPreferences(
+            application.applicationContext.getString(R.string.base_prefs),
+            Context.MODE_PRIVATE
+        )
+    }
 }
