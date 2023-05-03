@@ -1,35 +1,28 @@
 package com.example.androidprojectsettinginkotlin.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.example.androidprojectsettinginkotlin.MyApplication
 import com.example.androidprojectsettinginkotlin.R
-import com.example.androidprojectsettinginkotlin.dagger.component.MainComponent
 import com.example.androidprojectsettinginkotlin.databinding.ActivityMainBinding
 import com.example.androidprojectsettinginkotlin.viewmodel.MainViewModel
-import com.example.androidprojectsettinginkotlin.viewmodel.ViewModelFactory
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    lateinit var mainComponent: MainComponent
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+
     @Inject
-    lateinit var mainViewModel: MainViewModel
+    lateinit var factory: ViewModelProvider.Factory
+    private val viewModel by viewModels<MainViewModel> {factory}
+
+    override val layout: Int
+        get() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        mainComponent = (applicationContext as MyApplication).appComponent.mainComponent().create()
-        mainComponent.inject(this)
-
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        setUpActivity()
-    }
-
-    private fun setUpActivity() {
-        binding.lifecycleOwner = this
-        binding.viewModel = mainViewModel
+        binding.apply {
+            viewModel = this@MainActivity.viewModel
+            //TODO 초기화 수행
+        }
     }
 }

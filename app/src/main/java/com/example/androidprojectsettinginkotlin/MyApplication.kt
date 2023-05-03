@@ -1,17 +1,15 @@
 package com.example.androidprojectsettinginkotlin
 
-import android.app.Application
-import com.example.androidprojectsettinginkotlin.dagger.AppComponent
 import com.example.androidprojectsettinginkotlin.dagger.DaggerAppComponent
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 
-class MyApplication : Application() {
-    lateinit var appComponent: AppComponent
-
+class MyApplication : DaggerApplication() {
     override fun onCreate() {
         super.onCreate()
+    }
 
-        appComponent = DaggerAppComponent.builder()
-            .application(this)
-            .build()
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.factory().create(this)
     }
 }

@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -45,21 +45,30 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    def activity_ktx_ver = "1.7.1"
+    def fragment_ktx_ver = "1.5.7"
+    implementation "androidx.activity:activity-ktx:$activity_ktx_ver"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx_ver"
+
     // Dagger2
     def dagger2_ver = "2.45"
     implementation "com.google.dagger:dagger:$dagger2_ver"
+    implementation "com.google.dagger:dagger-android-support:$dagger2_ver"
     kapt "com.google.dagger:dagger-compiler:$dagger2_ver"
+    kapt "com.google.dagger:dagger-android-processor:$dagger2_ver"
 
     // Room
-    def room_ver = "2.5.0"
+    def room_ver = "2.5.1"
     implementation "androidx.room:room-runtime:$room_ver"
     implementation "androidx.room:room-ktx:$room_ver"
     kapt "androidx.room:room-compiler:$room_ver"
 
     // Retrofit
     def retrofit_ver = "2.9.0"
+    def logging_interceptor_ver = "4.11.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_ver"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_ver"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_ver"
 
     // Coroutines
     def coroutines_ver = "1.6.0"
