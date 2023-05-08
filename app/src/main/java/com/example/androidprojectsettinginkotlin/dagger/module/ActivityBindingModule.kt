@@ -1,7 +1,8 @@
 package com.example.androidprojectsettinginkotlin.dagger.module
 
 import com.example.androidprojectsettinginkotlin.dagger.scope.ActivityScope
-import com.example.androidprojectsettinginkotlin.view.MainActivity
+import com.example.androidprojectsettinginkotlin.view.main.MainActivity
+import com.example.androidprojectsettinginkotlin.view.splash.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -9,8 +10,13 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBindingModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [
-        MainActivityModule::class,
-        MainFragmentModule::class
+        MainModule::class
     ])
     abstract fun mainActivity(): MainActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [
+        SplashModule::class
+    ])
+    abstract fun splashActivity(): SplashActivity
 }

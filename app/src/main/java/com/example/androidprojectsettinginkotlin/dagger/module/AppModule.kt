@@ -2,10 +2,13 @@ package com.example.androidprojectsettinginkotlin.dagger.module
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.lifecycle.ViewModelProvider
 import com.example.androidprojectsettinginkotlin.MyApplication
 import com.example.androidprojectsettinginkotlin.R
 import com.example.androidprojectsettinginkotlin.database.AppDatabase
 import com.example.androidprojectsettinginkotlin.database.dao.UserDao
+import com.example.androidprojectsettinginkotlin.viewmodel.ViewModelFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

@@ -1,28 +1,29 @@
-package com.example.androidprojectsettinginkotlin.view
+package com.example.androidprojectsettinginkotlin.view.main
 
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.androidprojectsettinginkotlin.R
 import com.example.androidprojectsettinginkotlin.databinding.ActivityMainBinding
+import com.example.androidprojectsettinginkotlin.view.BaseActivity
 import com.example.androidprojectsettinginkotlin.viewmodel.MainViewModel
 import javax.inject.Inject
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    @Inject
-    lateinit var factory: ViewModelProvider.Factory
-    private val viewModel by viewModels<MainViewModel> {factory}
-
     override val layout: Int
         get() = R.layout.activity_main
+
+    @Inject
+    lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.apply {
+        setUpBinding()
+    }
+
+    fun setUpBinding() {
+        with(binding) {
             viewModel = this@MainActivity.viewModel
-            //TODO 초기화 수행
         }
     }
 }

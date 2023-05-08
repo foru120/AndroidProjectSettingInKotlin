@@ -45,6 +45,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    // Kotlin Standard Library
+//    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.10'
+//    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10'
+
     def activity_ktx_ver = "1.7.1"
     def fragment_ktx_ver = "1.5.7"
     implementation "androidx.activity:activity-ktx:$activity_ktx_ver"
@@ -80,17 +84,25 @@ dependencies {
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ver")
     // ViewModel utilities for Compose
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_ver")
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_ver")
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_ver")
-    // Lifecycles only (without ViewModel or LiveData)
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_ver")
-    // Lifecycle utilities for Compose
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_ver")
-    // Saved state module for ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_ver")
-    // Annotation processor
-    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_ver")
-    // alternately - if using Java8, use the following instead of lifecycle-compiler
-    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_ver")
+//    // Lifecycles only (without ViewModel or LiveData)
+//    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_ver")
+//    // Lifecycle utilities for Compose
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_ver")
+//    // Saved state module for ViewModel
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_ver")
+//    // Annotation processor
+//    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_ver")
+//    // alternately - if using Java8, use the following instead of lifecycle-compiler
+//    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_ver")
+
+    // Crash library
+    def crash_ver = "2.4.0"
+    implementation "cat.ereza:customactivityoncrash:$crash_ver"
+
+    // Indicator
+    def indicator_ver = "2.1.6"
+    implementation "me.relex:circleindicator:$indicator_ver"
 }

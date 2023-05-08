@@ -2,19 +2,31 @@ package com.example.androidprojectsettinginkotlin.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.androidprojectsettinginkotlin.MyApplication
-import com.example.androidprojectsettinginkotlin.repository.Repository
 import javax.inject.Inject
+import javax.inject.Provider
 
 class ViewModelFactory @Inject constructor(
-    private val application: MyApplication,
-    private val repository: Repository
+    private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
 
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return MainViewModel(application, repository) as T
+    @Suppress("UNCHECKED_CAST")
+    override fun <T: ViewModel> create(modelClass: Class<T>): T {
+        var creator: Provider<ViewModel>? = creators[modelClass]
+        if (creator == null) {
+            for ((key, value) in creators) {
+                if (modelClass.isAssignableFrom(key)) {
+                    creator = value
+                    break
+                }
+            }
         }
-        throw IllegalArgumentException("Unable to construct viewmodel")
+
+        if (creator == null) throw IllegalArgumentException("unknown model class $modelClass")
+        try {
+            return creator.get() as T
+        } catch (e: Exception) {
+            throw RuntimeException(e)
+        }
     }
+
 }
