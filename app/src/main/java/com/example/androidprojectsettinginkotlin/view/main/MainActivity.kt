@@ -3,11 +3,11 @@ package com.example.androidprojectsettinginkotlin.view.main
 import android.os.Bundle
 import com.example.androidprojectsettinginkotlin.R
 import com.example.androidprojectsettinginkotlin.databinding.ActivityMainBinding
-import com.example.androidprojectsettinginkotlin.view.BaseActivity
+import com.example.androidprojectsettinginkotlin.view.BaseDaggerAppCompatActivity
 import com.example.androidprojectsettinginkotlin.viewmodel.MainViewModel
 import javax.inject.Inject
 
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : BaseDaggerAppCompatActivity<ActivityMainBinding>() {
 
     override val layout: Int
         get() = R.layout.activity_main
@@ -21,7 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         setUpBinding()
     }
 
-    fun setUpBinding() {
+    private fun setUpBinding() {
         with(binding) {
             viewModel = this@MainActivity.viewModel
         }

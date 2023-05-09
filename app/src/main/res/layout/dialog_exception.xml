@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_exception_background">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="안내"
+            android:textColor="@color/black"
+            android:includeFontPadding="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dialog_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_45"
+            android:includeFontPadding="false"
+            android:gravity="center_vertical"
+            android:minLines="4"
+            android:maxLines="4"
+            android:scrollbars="vertical"
+            android:scrollbarSize="2dp"
+            android:scrollbarStyle="outsideInset"
+            app:layout_constraintStart_toStartOf="@+id/dialog_title"
+            app:layout_constraintEnd_toEndOf="@+id/dialog_title"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_title"
+            app:layout_constraintBottom_toTopOf="@+id/ok_btn"/>
+
+        <TextView
+            android:id="@+id/ok_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="확인"
+            android:textColor="@color/green"
+            android:background="@drawable/dialog_bottom_round_button"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+        </TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

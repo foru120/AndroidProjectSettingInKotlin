@@ -5,7 +5,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import dagger.android.support.DaggerAppCompatActivity
 
-abstract class BaseActivity<D: ViewDataBinding> : DaggerAppCompatActivity() {
+abstract class BaseDaggerAppCompatActivity<D: ViewDataBinding> : DaggerAppCompatActivity() {
     protected lateinit var binding: D
     protected abstract val layout: Int
 
