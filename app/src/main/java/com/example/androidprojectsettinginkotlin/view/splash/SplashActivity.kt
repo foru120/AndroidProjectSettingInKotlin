@@ -10,6 +10,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.androidprojectsettinginkotlin.R
 import com.example.androidprojectsettinginkotlin.databinding.ActivitySplashBinding
+import com.example.androidprojectsettinginkotlin.view.CaughtExceptionActivity
 import com.example.androidprojectsettinginkotlin.view.main.MainActivity
 import com.example.androidprojectsettinginkotlin.viewmodel.SplashViewModel
 import dagger.android.AndroidInjection
@@ -60,7 +61,15 @@ class SplashActivity : FragmentActivity() {
     }
 
     fun setUpObserve() {
-        binding.viewModel!!.isNext.observe(this, Observer {
+        viewModel.errorMessage.observe(this, Observer {
+            // 2. 에러 다이얼로그 띄움
+            val intent = Intent(this, CaughtExceptionActivity::class.java)
+            intent.putExtra("errorMessage", it)
+            finishAffinity()
+            startActivity(intent)
+        })
+
+        viewModel.isNext.observe(this, Observer {
             if (it) {
                 val intent = Intent(this, MainActivity::class.java)
                 finishAffinity()

@@ -99,8 +99,8 @@ dependencies {
 //    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_ver")
 
     // Crash library
-    def crash_ver = "2.4.0"
-    implementation "cat.ereza:customactivityoncrash:$crash_ver"
+//    def crash_ver = "2.4.0"
+//    implementation "cat.ereza:customactivityoncrash:$crash_ver"
 
     // Indicator
     def indicator_ver = "2.1.6"

@@ -11,8 +11,11 @@ import javax.inject.Inject
 class SplashViewModel @Inject constructor(
     private val application: MyApplication
 ) : AndroidViewModel(application) {
-    private var _isNext = MutableLiveData<Boolean>()
+    private val _isNext = MutableLiveData<Boolean>()
     val isNext: LiveData<Boolean> get() = _isNext
+
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> get() = _errorMessage
 
     fun goNext() {
         _isNext.value = true

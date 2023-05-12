@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
+import com.example.androidprojectsettinginkotlin.R
 import com.example.androidprojectsettinginkotlin.view.dialog.ExceptionDialog
 import com.example.androidprojectsettinginkotlin.view.splash.SplashActivity
 import kotlin.system.exitProcess
 
-class UncaughtExceptionActivity : BaseActivity() {
-
+class CaughtExceptionActivity : BaseActivity() {
     private lateinit var exceptionDialog: ExceptionDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {

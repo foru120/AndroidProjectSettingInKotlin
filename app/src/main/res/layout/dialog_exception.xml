@@ -6,7 +6,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/dialog_exception_background">
 
         <TextView
@@ -15,7 +15,9 @@
             android:layout_height="wrap_content"
             android:text="안내"
             android:textColor="@color/black"
+            android:textSize="24sp"
             android:includeFontPadding="false"
+            android:padding="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -23,12 +25,10 @@
         <TextView
             android:id="@+id/dialog_content"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:textColor="@color/gray_45"
             android:includeFontPadding="false"
             android:gravity="center_vertical"
-            android:minLines="4"
-            android:maxLines="4"
             android:scrollbars="vertical"
             android:scrollbarSize="2dp"
             android:scrollbarStyle="outsideInset"
@@ -43,9 +43,11 @@
             android:layout_height="wrap_content"
             android:text="확인"
             android:textColor="@color/green"
+            android:textSize="16sp"
             android:background="@drawable/dialog_bottom_round_button"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
+            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
