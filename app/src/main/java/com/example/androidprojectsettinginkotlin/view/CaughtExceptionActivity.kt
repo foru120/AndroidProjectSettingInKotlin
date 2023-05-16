@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import com.example.androidprojectsettinginkotlin.R
 import com.example.androidprojectsettinginkotlin.view.dialog.ExceptionDialog
+import com.example.androidprojectsettinginkotlin.view.loading.LoadingActivity
 import com.example.androidprojectsettinginkotlin.view.splash.SplashActivity
 import kotlin.system.exitProcess
 
@@ -17,7 +18,7 @@ class CaughtExceptionActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         exceptionDialog = ExceptionDialog(this) {
-            val intent = Intent(this, SplashActivity::class.java)
+            val intent = Intent(this, LoadingActivity::class.java)
             startActivity(intent)
             exitProcess(0)
         }

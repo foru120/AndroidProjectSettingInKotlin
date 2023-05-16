@@ -15,7 +15,4 @@ class MainViewModel @Inject constructor(
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
-    init {
-        _errorMessage.value = "zzzzzzzzzzzzzzzz"
-    }
 }

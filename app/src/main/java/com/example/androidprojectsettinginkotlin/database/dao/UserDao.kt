@@ -6,10 +6,7 @@ import androidx.room.Query
 import com.example.androidprojectsettinginkotlin.database.entity.User
 
 @Dao
-interface UserDao {
+interface UserDao : BaseDao<User> {
     @Query("SELECT * FROM user ORDER BY id DESC")
-    fun getAllRecordsFromDB(): List<User>?
-
-    @Insert
-    fun insertRecord(user: User)
+    suspend fun getAllRecordsFromDB(): List<User>
 }
