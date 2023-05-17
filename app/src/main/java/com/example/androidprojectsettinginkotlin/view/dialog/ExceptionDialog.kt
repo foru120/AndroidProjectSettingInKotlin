@@ -2,6 +2,7 @@ package com.example.androidprojectsettinginkotlin.view.dialog
 
 import android.content.Context
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,7 @@ class ExceptionDialog constructor(
     }
 
     fun setErrorMessage(errorMessage: String?) {
+        Log.d("kyh", if (!TextUtils.isEmpty(errorMessage)) errorMessage!! else "")
         binding.dialogContent.text = errorMessage
     }
 }

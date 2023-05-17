@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.androidprojectsettinginkotlin.database.dao.BaseDao
 import com.example.androidprojectsettinginkotlin.database.dao.UserDao
 import com.example.androidprojectsettinginkotlin.database.entity.User
 

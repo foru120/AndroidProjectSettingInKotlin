@@ -6,7 +6,9 @@ import com.example.androidprojectsettinginkotlin.constants.PREFS_LOGIN_ID
 import com.example.androidprojectsettinginkotlin.constants.PREFS_VISIBLE_BANNER_SCREEN
 import com.example.androidprojectsettinginkotlin.constants.PREFS_VISIBLE_SPLASH_SCREEN
 import com.example.androidprojectsettinginkotlin.database.entity.User
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,23 +21,27 @@ class Repository @Inject constructor(
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
-    suspend fun initDatabase(): List<User> {
+    suspend fun initDatabase(): List<User> = withContext(Dispatchers.IO) {
         delay(1000)
-        return localDataSource.initDatabase()
+        return@withContext localDataSource.initDatabase()
     }
 
     suspend fun initSharedPreference() {
-        delay(1000)
+        withContext(Dispatchers.IO) {
+            delay(1000)
 
-        if (TextUtils.isEmpty(sharedPreferences.getString(PREFS_LOGIN_ID, ""))) {
-            sharedPreferences.edit().putBoolean(PREFS_VISIBLE_SPLASH_SCREEN, true).apply()
-            sharedPreferences.edit().putBoolean(PREFS_VISIBLE_BANNER_SCREEN, true).apply()
+            if (TextUtils.isEmpty(sharedPreferences.getString(PREFS_LOGIN_ID, ""))) {
+                sharedPreferences.edit().putBoolean(PREFS_VISIBLE_SPLASH_SCREEN, true).apply()
+                sharedPreferences.edit().putBoolean(PREFS_VISIBLE_BANNER_SCREEN, true).apply()
+            }
         }
     }
 
     suspend fun initSampleData() {
-        delay(1000)
+        withContext(Dispatchers.IO) {
+            delay(1000)
 
-        localDataSource.initSampleData()
+            localDataSource.initSampleData()
+        }
     }
 }

@@ -13,17 +13,18 @@
         android:theme="@style/Theme.AndroidProjectSettingInKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".PermissionActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.UncaughtExceptionActivity"
             android:configChanges="screenSize|orientation"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".view.CaughtExceptionActivity"
             android:configChanges="screenSize|orientation"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".view.loading.LoadingActivity"
             android:exported="true"
@@ -35,20 +36,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.splash.SplashActivity"
             android:configChanges="screenSize|orientation"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".view.main.MainActivity"
             android:configChanges="screenSize|orientation"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

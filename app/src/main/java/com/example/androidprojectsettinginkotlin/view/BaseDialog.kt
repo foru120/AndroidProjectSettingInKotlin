@@ -7,7 +7,6 @@ import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.Window
 import android.view.WindowManager
 

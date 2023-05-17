@@ -25,7 +25,7 @@ class LoadingViewModel @Inject constructor(application: MyApplication) : Android
     val goNext: LiveData<Boolean> get() = _goNext
 
     fun initApp() {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.Main) {
             _progressPercent.value = 0
             val users: List<User> = repository.initDatabase()
             _progressPercent.value = 33

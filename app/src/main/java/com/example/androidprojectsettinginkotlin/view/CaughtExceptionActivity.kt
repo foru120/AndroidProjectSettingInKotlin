@@ -18,8 +18,9 @@ class CaughtExceptionActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         exceptionDialog = ExceptionDialog(this) {
-            val intent = Intent(this, LoadingActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, LoadingActivity::class.java)
+//            startActivity(intent)
+            finishAffinity()
             exitProcess(0)
         }
         if (exceptionDialog.isShowing) exceptionDialog.dismiss()
