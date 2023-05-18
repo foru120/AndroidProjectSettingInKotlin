@@ -21,20 +21,28 @@ class LoadingViewModel @Inject constructor(application: MyApplication) : Android
     private val _progressPercent = MutableLiveData<Int>()
     val progressPercent: LiveData<Int> get() = _progressPercent
 
-    private val _goNext = MutableLiveData<Boolean>()
-    val goNext: LiveData<Boolean> get() = _goNext
+    private val _isNext = MutableLiveData<Boolean>()
+    val isNext: LiveData<Boolean> get() = _isNext
 
     fun initApp() {
         viewModelScope.launch(Dispatchers.Main) {
-            _progressPercent.value = 0
+            setProgress(0)
             val users: List<User> = repository.initDatabase()
-            _progressPercent.value = 33
+            setProgress(33)
             repository.initSharedPreference()
-            _progressPercent.value = 66
+            setProgress(66)
             repository.initSampleData()
-            _progressPercent.value = 100
+            setProgress(100)
 
-            _goNext.value = true
+            goNext()
         }
+    }
+
+    fun setProgress(value: Int) {
+        _progressPercent.value = value
+    }
+
+    fun goNext() {
+        _isNext.value = true
     }
 }

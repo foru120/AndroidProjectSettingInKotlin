@@ -14,7 +14,10 @@ class PermissionViewModel @Inject constructor(application: MyApplication) : Andr
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
-    private val _goNext = MutableLiveData<Boolean>()
-    val goNext: LiveData<Boolean> get() = _goNext
+    private val _isNext = MutableLiveData<Boolean>()
+    val isNext: LiveData<Boolean> get() = _isNext
 
+    fun goNext() {
+        _isNext.value = true
+    }
 }

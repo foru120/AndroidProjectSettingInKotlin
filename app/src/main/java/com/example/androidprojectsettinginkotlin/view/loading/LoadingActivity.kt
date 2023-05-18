@@ -41,7 +41,7 @@ class LoadingActivity : BaseDaggerAppCompatActivity<ActivityLoadingBinding>() {
             startActivity(intent)
         })
 
-        viewModel.goNext.observe(this, Observer {
+        viewModel.isNext.observe(this, Observer {
             val intent = Intent(this, SplashActivity::class.java)
             finishAffinity()
             startActivity(intent)
