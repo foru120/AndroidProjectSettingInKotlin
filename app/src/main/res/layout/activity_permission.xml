@@ -15,5 +15,65 @@
         android:layout_height="match_parent"
         tools:context=".view.permission.PermissionActivity">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_0.1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_0.9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <TextView
+            android:id="@+id/title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/permission_act_title"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="@id/ver_guideline_0.1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/subtitle_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/permission_act_subtitle"
+            android:textSize="8sp"
+            android:textColor="@color/black"
+            android:includeFontPadding="false"
+            android:lineSpacingMultiplier="0.6"
+            app:layout_constraintTop_toBottomOf="@+id/title_view"
+            app:layout_constraintStart_toStartOf="@id/ver_guideline_0.1" />
+
+        <TextView
+            android:id="@+id/require_permission_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/permission_act_require_permission"
+            android:textSize="10sp"
+            android:textColor="@color/purple_200"
+            android:includeFontPadding="false"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="@id/ver_guideline_0.1"
+            app:layout_constraintTop_toBottomOf="@+id/subtitle_view" />
+
+        <com.example.androidprojectsettinginkotlin.view.permission.customview.PermissionView
+            android:id="@+id/camera_permission_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:title="@string/permission_view_camera_title"
+            app:content="@string/permission_view_camera_content"
+            app:layout_constraintStart_toStartOf="@id/ver_guideline_0.1"
+            app:layout_constraintEnd_toEndOf="@+id/ver_guideline_0.9"
+            app:layout_constraintTop_toBottomOf="@+id/require_permission_view" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -2,6 +2,34 @@
     <string name="app_name">AndroidProjectSettingInKotlin</string>
     <string name="base_url">http://test.com</string>
     <string name="base_prefs">basePrefs</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TODO) Permission Activity -->
+    <string name="permission_act_title">어메이징 푸드 권한 안내</string>
+    <string name="permission_act_subtitle">
+어메이징 푸드는 아래 권한들을 필요로 합니다.\n
+서비스 사용 중 앱에서 요청 시 허용해주세요.
+    </string>
+    <string name="permission_act_require_permission">필수 접근 권한</string>
+    <string name="permission_act_optional_permission">선택 접근 권한</string>
+    <string name="permission_view_dot">·</string>
+    <string name="permission_view_camera_title">카메라</string>
+    <string name="permission_view_camera_content">
+운전면허증은 반드시 스캔하여 등록해야 하며, 운행 전 차량 확인 시 반드시 실시간 촬영이 필요합니다.
+    </string>
+    <string name="permission_view_phone_title">전화</string>
+    <string name="permission_view_phone_content">
+본인 이용 확인을 위해 앱을 사용 중인 휴대폰의 전화번호를 조회합니다.
+    </string>
+    <string name="permission_view_location_title">위치</string>
+    <string name="permission_view_location_content">
+내 현재 위치는 쏘카존 찾기, 부름 서비스 차량 제어를 위한 필수 정보로 활용됩니다.
+    </string>
+    <string name="permission_view_storage_space_title">저장공간</string>
+    <string name="permission_view_storage_space_content">
+운행 전 차량 확인 시 촬영한 사진이 저장됩니다.
+    </string>
+    <string name="permission_view_bluetooth_title">블루투스</string>
+    <string name="permission_view_bluetooth_content">
+차량을 제어할 때 블루투스를 이용할 수 있습니다. (문 열기, 문 잠금 등)
+    </string>
 </resources>

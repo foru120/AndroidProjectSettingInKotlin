@@ -61,7 +61,7 @@ class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding
         val permission = getPermissionList()
 
         if (permissionDeniedCount(permission) == 0) {
-            viewModel.goNext()
+            goNext()
         }
     }
 
@@ -76,5 +76,9 @@ class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding
 
     private fun permissionDeniedCount(permission: Map<String, String>): Int {
         return permission.count { ContextCompat.checkSelfPermission(this, it.value)  == PackageManager.PERMISSION_DENIED }
+    }
+
+    private fun goNext() {
+        viewModel.goNext()
     }
 }

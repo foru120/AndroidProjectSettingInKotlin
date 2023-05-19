@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dot_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/permission_view_dot"
+            android:textSize="8sp"
+            android:textColor="@color/black"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.05" />
+
+        <TextView
+            android:id="@+id/title_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="8sp"
+            android:textColor="@color/black"
+            android:includeFontPadding="false"
+            app:layout_constraintStart_toEndOf="@+id/dot_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.35" />
+
+        <TextView
+            android:id="@+id/content_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="8sp"
+            android:textColor="@color/black"
+            android:includeFontPadding="false"
+            android:lineSpacingMultiplier="0.6"
+            app:layout_constraintStart_toEndOf="@+id/title_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.6"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
