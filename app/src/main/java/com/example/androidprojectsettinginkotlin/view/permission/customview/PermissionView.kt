@@ -19,8 +19,8 @@ class PermissionView constructor(context: Context, attrs: AttributeSet?): Constr
                 attrs,
                 R.styleable.PermissionView
             ).apply {
-                binding.titleView.text = getString(R.styleable.PermissionView_title)
-                binding.contentView.text = getString(R.styleable.PermissionView_content)
+                binding.titleView.text = getString(R.styleable.PermissionView_pv_title)
+                binding.contentView.text = getString(R.styleable.PermissionView_pv_content)
 
                 recycle()
             }

@@ -5,17 +5,22 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.example.androidprojectsettinginkotlin.R
+import com.example.androidprojectsettinginkotlin.constants.DIALOG_TYPE_PERMISSION
 import com.example.androidprojectsettinginkotlin.databinding.ActivityPermissionBinding
 import com.example.androidprojectsettinginkotlin.view.BaseDaggerAppCompatActivity
 import com.example.androidprojectsettinginkotlin.view.CaughtExceptionActivity
+import com.example.androidprojectsettinginkotlin.view.dialog.CustomDialog
+import com.example.androidprojectsettinginkotlin.view.dialog.ExceptionDialog
 import com.example.androidprojectsettinginkotlin.view.loading.LoadingActivity
 import com.example.androidprojectsettinginkotlin.view.splash.SplashActivity
 import com.example.androidprojectsettinginkotlin.viewmodel.PermissionViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
+import kotlin.system.exitProcess
 
 class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding>() {
 
@@ -33,7 +38,7 @@ class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding
 
         setUpBinding()
         setUpObserve()
-        checkPermission()
+        isAllGrantedPermissions()
     }
 
     private fun setUpBinding() {
@@ -50,6 +55,10 @@ class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding
             startActivity(intent)
         })
 
+        viewModel.isRequestPermission.observe(this, Observer {
+            requestPermission()
+        })
+
         viewModel.isNext.observe(this, Observer {
             val intent = Intent(this, LoadingActivity::class.java)
             finishAffinity()
@@ -57,7 +66,7 @@ class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding
         })
     }
 
-    private fun checkPermission() {
+    private fun isAllGrantedPermissions() {
         val permission = getPermissionList()
 
         if (permissionDeniedCount(permission) == 0) {
@@ -70,15 +79,67 @@ class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding
         permission["camera"] = Manifest.permission.CAMERA
         permission["storageRead"] = Manifest.permission.READ_EXTERNAL_STORAGE
         permission["storageWrite"] =  Manifest.permission.WRITE_EXTERNAL_STORAGE
+        permission["bluetooth"] = Manifest.permission.BLUETOOTH
+        permission["bluetoothAdmin"] = Manifest.permission.BLUETOOTH_ADMIN
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            permission["bluetoothConnect"] = Manifest.permission.BLUETOOTH_CONNECT
+            permission["bluetoothAdvertise"] = Manifest.permission.BLUETOOTH_ADVERTISE
+        }
+        permission["phoneStateRead"] = Manifest.permission.READ_PHONE_STATE
+        permission["smsRead"] = Manifest.permission.READ_SMS
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            permission["phoneNumbersRead"] = Manifest.permission.READ_PHONE_NUMBERS
+        }
 
         return permission
     }
 
-    private fun permissionDeniedCount(permission: Map<String, String>): Int {
-        return permission.count { ContextCompat.checkSelfPermission(this, it.value)  == PackageManager.PERMISSION_DENIED }
+    private fun permissionDeniedCount(permissionList: Map<String, String>): Int {
+        return permissionList.count { ContextCompat.checkSelfPermission(this, it.value)  == PackageManager.PERMISSION_DENIED }
+    }
+
+    private fun requestPermission() {
+        Log.d("kyh", "requestPermission")
+        val permissionList: Map<String, String> = getPermissionList()
+
+        requestPermissions(permissionList.values.toTypedArray(), REQUEST_PERMISSIONS)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        var isAllGranted: Boolean = true
+
+        if (requestCode == REQUEST_PERMISSIONS) {
+            for (grant in grantResults) {
+                if (grant != PackageManager.PERMISSION_GRANTED) {
+                    isAllGranted = false
+                    break
+                }
+            }
+
+            if (isAllGranted) {
+                goNext()
+            } else {
+                showPermissionDeniedDialog()
+            }
+        }
     }
 
     private fun goNext() {
         viewModel.goNext()
+    }
+
+    private fun showPermissionDeniedDialog() {
+        val permissionDeniedDialog = CustomDialog(this, DIALOG_TYPE_PERMISSION) {
+            finishAffinity()
+            exitProcess(0)
+        }
+        if (permissionDeniedDialog.isShowing) permissionDeniedDialog.dismiss()
+        permissionDeniedDialog.show()
     }
 }

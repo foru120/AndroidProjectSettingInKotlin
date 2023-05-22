@@ -3,11 +3,19 @@
     <string name="base_url">http://test.com</string>
     <string name="base_prefs">basePrefs</string>
 
+    <!-- TODO) 공통 텍스트 -->
+    <string name="confirm">확인</string>
+
+    <!-- TODO) 다이얼로그 -->
+    <string name="dialog_permission_title">서비스 이용 알림</string>
+    <string name="dialog_permission_content">
+필수 권한을 허용해야\n서비스 정상 이용이 가능합니다.\n권한 요청 시 반드시 허용해주세요.
+    </string>
+
     <!-- TODO) Permission Activity -->
     <string name="permission_act_title">어메이징 푸드 권한 안내</string>
     <string name="permission_act_subtitle">
-어메이징 푸드는 아래 권한들을 필요로 합니다.\n
-서비스 사용 중 앱에서 요청 시 허용해주세요.
+어메이징 푸드는 아래 권한들을 필요로 합니다.\n서비스 사용 중 앱에서 요청 시 허용해주세요.
     </string>
     <string name="permission_act_require_permission">필수 접근 권한</string>
     <string name="permission_act_optional_permission">선택 접근 권한</string>

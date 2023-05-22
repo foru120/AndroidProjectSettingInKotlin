@@ -1,5 +1,6 @@
 package com.example.androidprojectsettinginkotlin.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,7 +18,15 @@ class PermissionViewModel @Inject constructor(application: MyApplication) : Andr
     private val _isNext = MutableLiveData<Boolean>()
     val isNext: LiveData<Boolean> get() = _isNext
 
+    private val _isRequestPermission = MutableLiveData<Boolean>()
+    val isRequestPermission: LiveData<Boolean> get() = _isRequestPermission
+
     fun goNext() {
         _isNext.value = true
+    }
+
+    fun requestPermission() {
+        Log.d("kyh", "viewmodel: requestPermission")
+        _isRequestPermission.value = true
     }
 }
