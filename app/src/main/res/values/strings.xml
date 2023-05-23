@@ -9,7 +9,13 @@
     <!-- TODO) 다이얼로그 -->
     <string name="dialog_permission_title">서비스 이용 알림</string>
     <string name="dialog_permission_content">
-필수 권한을 허용해야\n서비스 정상 이용이 가능합니다.\n권한 요청 시 반드시 허용해주세요.
+필수 권한을 허용해야 서비스 정상 이용이 가능합니다.\n권한 요청 시 반드시 허용해주세요.
+    </string>
+    <string name="dialog_permission_once_content">
+필수 권한을 허용해야 서비스 정상 이용이 가능합니다.\n한번 더 거절 시 서비스 이용이 불가할 수 있습니다.
+    </string>
+    <string name="dialog_permission_twice_content">
+필수 권한을 허용해야 서비스 정상 이용이 가능합니다.\n두 번 이상 거절했거나, 권한 요청 시 \'다시 묻지 않음\'을 체크했을 경우 앱 재설치 또는 수동으로 권한을 부여해주세요.
     </string>
 
     <!-- TODO) Permission Activity -->

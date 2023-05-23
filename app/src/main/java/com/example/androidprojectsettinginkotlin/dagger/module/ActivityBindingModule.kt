@@ -1,6 +1,7 @@
 package com.example.androidprojectsettinginkotlin.dagger.module
 
 import com.example.androidprojectsettinginkotlin.dagger.scope.ActivityScope
+import com.example.androidprojectsettinginkotlin.view.library.LibraryActivity
 import com.example.androidprojectsettinginkotlin.view.loading.LoadingActivity
 import com.example.androidprojectsettinginkotlin.view.main.MainActivity
 import com.example.androidprojectsettinginkotlin.view.permission.PermissionActivity
@@ -33,4 +34,10 @@ abstract class ActivityBindingModule {
         PermissionModule::class
     ])
     abstract fun permissionActivity(): PermissionActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [
+        LibraryModule::class
+    ])
+    abstract fun libraryActivity(): LibraryActivity
 }

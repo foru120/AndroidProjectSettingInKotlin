@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- 인터넷 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 카메라 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <!-- 외부 저장소 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 카메라 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 외부 저장소 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 블루투스 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 블루투스 -->
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <!-- 전화번호 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 전화번호 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
     <uses-permission android:name="android.permission.READ_SMS" />
 
@@ -29,7 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidProjectSettingInKotlin"
         tools:targetApi="31">
-
+        <activity
+            android:name=".LibraryActivity"
+            android:exported="false" />
         <activity
             android:name=".view.UncaughtExceptionActivity"
             android:configChanges="screenSize|orientation"
@@ -60,12 +57,12 @@
             android:name=".view.splash.SplashActivity"
             android:configChanges="screenSize|orientation"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.main.MainActivity"
             android:configChanges="screenSize|orientation"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

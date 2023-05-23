@@ -2,23 +2,20 @@ package com.example.androidprojectsettinginkotlin.view.permission
 
 import android.Manifest
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.example.androidprojectsettinginkotlin.R
-import com.example.androidprojectsettinginkotlin.constants.DIALOG_TYPE_PERMISSION
+import com.example.androidprojectsettinginkotlin.constants.*
 import com.example.androidprojectsettinginkotlin.databinding.ActivityPermissionBinding
 import com.example.androidprojectsettinginkotlin.view.BaseDaggerAppCompatActivity
 import com.example.androidprojectsettinginkotlin.view.CaughtExceptionActivity
 import com.example.androidprojectsettinginkotlin.view.dialog.CustomDialog
-import com.example.androidprojectsettinginkotlin.view.dialog.ExceptionDialog
 import com.example.androidprojectsettinginkotlin.view.loading.LoadingActivity
-import com.example.androidprojectsettinginkotlin.view.splash.SplashActivity
 import com.example.androidprojectsettinginkotlin.viewmodel.PermissionViewModel
-import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
@@ -29,6 +26,8 @@ class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding
 
     @Inject
     lateinit var viewModel: PermissionViewModel
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private val REQUEST_PERMISSIONS = 1
 
@@ -43,7 +42,7 @@ class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding
 
     private fun setUpBinding() {
         with(binding) {
-            binding.viewModel = viewModel
+            viewModel = this@PermissionActivity.viewModel
         }
     }
 
@@ -99,7 +98,6 @@ class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding
     }
 
     private fun requestPermission() {
-        Log.d("kyh", "requestPermission")
         val permissionList: Map<String, String> = getPermissionList()
 
         requestPermissions(permissionList.values.toTypedArray(), REQUEST_PERMISSIONS)
@@ -134,12 +132,35 @@ class PermissionActivity : BaseDaggerAppCompatActivity<ActivityPermissionBinding
         viewModel.goNext()
     }
 
+    private fun getPermissionDenyCount(): Int {
+        return sharedPreferences.getInt(PREFS_PERMISSION_DENY_COUNT, -1)
+    }
+
     private fun showPermissionDeniedDialog() {
-        val permissionDeniedDialog = CustomDialog(this, DIALOG_TYPE_PERMISSION) {
+        var dialogType: String = DIALOG_TYPE_PERMISSION
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            dialogType = when (getPermissionDenyCount()) {
+                -1 -> {
+                    sharedPreferences.edit().putInt(PREFS_PERMISSION_DENY_COUNT, 1).apply()
+                    DIALOG_TYPE_PERMISSION_ONCE
+                }
+                1 -> {
+                    sharedPreferences.edit().putInt(PREFS_PERMISSION_DENY_COUNT, 2).apply()
+                    DIALOG_TYPE_PERMISSION_TWICE
+                }
+                else -> DIALOG_TYPE_PERMISSION_TWICE
+            }
+        } else {
+            DIALOG_TYPE_PERMISSION
+        }
+
+        val permissionDeniedDialog = CustomDialog(this, dialogType) {
             finishAffinity()
             exitProcess(0)
         }
         if (permissionDeniedDialog.isShowing) permissionDeniedDialog.dismiss()
         permissionDeniedDialog.show()
     }
+
 }
