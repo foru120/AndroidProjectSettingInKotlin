@@ -7,6 +7,7 @@ import com.example.androidprojectsettinginkotlin.MyApplication
 import com.example.androidprojectsettinginkotlin.R
 import com.example.androidprojectsettinginkotlin.database.AppDatabase
 import com.example.androidprojectsettinginkotlin.database.dao.UserDao
+import com.example.androidprojectsettinginkotlin.utils.XmlDataParser
 import com.example.androidprojectsettinginkotlin.viewmodel.ViewModelFactory
 import dagger.Binds
 import dagger.Module
@@ -37,5 +38,11 @@ class AppModule {
             application.applicationContext.getString(R.string.base_prefs),
             Context.MODE_PRIVATE
         )
+    }
+
+    @Singleton
+    @Provides
+    fun providesXmlDataParser(): XmlDataParser {
+        return XmlDataParser()
     }
 }

@@ -13,4 +13,8 @@ class LibraryViewModel @Inject constructor(application: MyApplication): AndroidV
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
+
+    fun setErrorMessage(errorMessage: String?) {
+        _errorMessage.value = errorMessage?: ""
+    }
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<library>
+    <name>Dagger2</name>
+    <url>https://github.com/google/dagger</url>
+</library>
+<library>
+    <name>Room</name>
+    <url></url>
+</library>
+<library>
+    <name>Retrofit2</name>
+    <url></url>
+</library>
+<library>
+    <name>Coroutines</name>
+    <url></url>
+</library>
+<library>
+    <name>LifeCycle</name>
+    <url></url>
+</library>
+<library>
+    <name>CircleIndicator</name>
+    <url>https://github.com/ongakuer/CircleIndicator</url>
+</library>
+<library>
+<name></name>
+<url></url>
+</library>
+<library>
+<name></name>
+<url></url>
+</library>
+<library>
+<name></name>
+<url></url>
+</library>
+<library>
+<name></name>
+<url></url>
+</library>
+<library>
+<name></name>
+<url></url>
+</library>
+<library>
+<name></name>
+<url></url>
+</library>
+<library>
+<name></name>
+<url></url>
+</library>
