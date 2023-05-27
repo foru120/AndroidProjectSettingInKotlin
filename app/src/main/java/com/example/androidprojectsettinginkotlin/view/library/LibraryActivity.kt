@@ -50,19 +50,13 @@ class LibraryActivity : BaseDaggerAppCompatActivity<ActivityLibraryBinding>() {
 
     private fun setUpItemList() {
         try {
-            val inputStream = getAssetFile(getString(R.string.library_file_name))
-            val libraryList = xmlDataParser.getLibraryXml(inputStream)
-            setUpRecyclerView(libraryList)
+            val inputStream = assets.open(getString(R.string.library_file_name))
+            inputStream.use {
+                val libraryList = xmlDataParser.getLibraryXml(it)
+                setUpRecyclerView(libraryList)
+            }
         } catch (e: java.lang.Exception) {
             viewModel.setErrorMessage(e.message)
-        }
-    }
-
-    private fun getAssetFile(filePath: String): InputStream {
-        val am = resources.assets
-
-        am.open(filePath).use { inputStream ->
-            return inputStream
         }
     }
 

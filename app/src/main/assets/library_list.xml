@@ -1,53 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <library>
-    <name>Dagger2</name>
-    <url>https://github.com/google/dagger</url>
-</library>
-<library>
-    <name>Room</name>
-    <url></url>
-</library>
-<library>
-    <name>Retrofit2</name>
-    <url></url>
-</library>
-<library>
-    <name>Coroutines</name>
-    <url></url>
-</library>
-<library>
-    <name>LifeCycle</name>
-    <url></url>
-</library>
-<library>
-    <name>CircleIndicator</name>
-    <url>https://github.com/ongakuer/CircleIndicator</url>
-</library>
-<library>
-<name></name>
-<url></url>
-</library>
-<library>
-<name></name>
-<url></url>
-</library>
-<library>
-<name></name>
-<url></url>
-</library>
-<library>
-<name></name>
-<url></url>
-</library>
-<library>
-<name></name>
-<url></url>
-</library>
-<library>
-<name></name>
-<url></url>
-</library>
-<library>
-<name></name>
-<url></url>
+    <libraryinfo name="Activity KTX" url="https://developer.android.com/jetpack/androidx/releases/activity?hl=ko" />
+    <libraryinfo name="CircleIndicator" url="https://github.com/ongakuer/CircleIndicator" />
+    <libraryinfo name="Constraint Layout" url="https://developer.android.com/jetpack/androidx/releases/constraintlayout?hl=ko" />
+    <libraryinfo name="Coroutines" url="https://github.com/Kotlin/kotlinx.coroutines" />
+    <libraryinfo name="Dagger2" url="https://github.com/google/dagger" />
+    <libraryinfo name="Databinding" url="https://developer.android.com/topic/libraries/data-binding?hl=ko" />
+    <libraryinfo name="Fragment KTX" url="https://developer.android.com/jetpack/androidx/releases/fragment?hl=ko" />
+    <libraryinfo name="Indicator" url="https://github.com/ongakuer/CircleIndicator" />
+    <libraryinfo name="LifeCycle" url="https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=ko" />
+    <libraryinfo name="Material Components" url="https://developer.android.com/reference/com/google/android/material/packages" />
+    <libraryinfo name="Retrofit2" url="https://square.github.io/retrofit/" />
+    <libraryinfo name="Room" url="https://developer.android.com/jetpack/androidx/releases/room?hl=ko" />
+    <libraryinfo name="Room" url="https://developer.android.com/jetpack/androidx/releases/room?hl=ko" />
+    <libraryinfo name="Room" url="https://developer.android.com/jetpack/androidx/releases/room?hl=ko" />
+    <libraryinfo name="Room" url="https://developer.android.com/jetpack/androidx/releases/room?hl=ko" />
+    <libraryinfo name="Room" url="https://developer.android.com/jetpack/androidx/releases/room?hl=ko" />
+    <libraryinfo name="Room" url="https://developer.android.com/jetpack/androidx/releases/room?hl=ko" />
 </library>
